@@ -1,0 +1,43 @@
+<div class="product col-proxs-12 col-xs-6 col-sm-4 col-md-4" id="product-<?php echo $wo['product']['id']?>" data-id="<?php echo $wo['product']['id']?>">
+	<div class="product_info wow_main_mkt_prod">
+		<div class="product-image">
+			<a href="<?php echo $wo['product']['url']?>"><img src="<?php echo $wo['product']['images'][0]['image_org'];?>"></a>
+			<?php if ($wo['loggedin']) { if ($wo['product']['seller']['id'] != $wo['user']['user_id']) { ?>
+				<div class="product-links">
+					<a class="more-info btn btn-mat" href="<?php echo $wo['product']['url']?>" target="_blank"><?php echo $wo['lang']['more_info'] ?></a>
+				</div>
+			<?php } else { ?>
+			<?php } ?>
+			<?php } ?>
+		</div>
+		<div class="produc_info">
+		<div class="product-price">
+				<?php echo (!empty($wo['currencies'][$wo['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];?><?php echo $wo['product']['price']?>
+			</div>
+			<div class="product-title">
+				<a href="<?php echo $wo['product']['url']?>" title="<?php echo $wo['product']['name']?>"><?php echo $wo['product']['name']?></a>
+			</div>
+			<div class="product-by">
+				<?php
+				    $product_by_ = $wo['product']['category'];
+				    $product_by_ = str_replace('{product_category_name}', $wo['products_categories'][$wo['product']['category']], $product_by_);
+				?>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=products&c_id=' . $wo['product']['category']);?>"><?php echo $wo['products_categories'][$wo['product']['category']];?></a>
+				<?php if (!empty($wo['product']['product_sub_category'])) { ?>
+				<div>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=products&c_id=' . $wo['product']['category']);?>"><?php echo $wo['product']['product_sub_category'];?></a>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
+		<div class="wow_main_prod_foot">
+			<?php if ($wo['loggedin']) { if ($wo['product']['seller']['id'] != $wo['user']['user_id']) { ?>
+				<button class="contact" onclick="Wo_OpenChatTab(<?php echo $wo['product']['seller']['id']?>,0,<?php echo $wo['product']['id']?>)"><svg viewBox="0 0 28 28" height="20" width="20" fill="#1877f2"><path d="M14 2.042c6.76 0 12 4.952 12 11.64S20.76 25.322 14 25.322a13.091 13.091 0 0 1-3.474-.461.956 .956 0 0 0-.641.047L7.5 25.959a.961.961 0 0 1-1.348-.849l-.065-2.134a.957.957 0 0 0-.322-.684A11.389 11.389 0 0 1 2 13.682C2 6.994 7.24 2.042 14 2.042ZM6.794 17.086a.57.57 0 0 0 .827.758l3.786-2.874a.722.722 0 0 1 .868 0l2.8 2.1a1.8 1.8 0 0 0 2.6-.481l3.525-5.592a.57.57 0 0 0-.827-.758l-3.786 2.874a.722.722 0 0 1-.868 0l-2.8-2.1a1.8 1.8 0 0 0-2.6.481Z"></path></svg></button> 
+			<?php } else { ?>
+				<a class="contact" href="<?php echo $wo['product']['url']?>" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path></svg></a>
+			<?php } ?>
+			<?php } ?>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

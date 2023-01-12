@@ -1,0 +1,178 @@
+<?php if ($wo['loggedin'] == true && Wo_IsMobile() == false) { ?>
+<div class="left-sidebar">
+  <ul>
+    <li>
+      <a href="<?php echo $wo['user']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['user']['username'];?>">
+      <img id="updateImage-<?php echo $wo['user']['user_id']?>" src="<?php echo $wo['user']['avatar'];?>" alt="<?php echo $wo['user']['name'];?> Profile Picture"> <?php echo $wo['user']['first_name'];?> <?php echo $wo['user']['last_name'];?>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=friends-nearby'); ?>">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/friends.png" alt="<?php echo $wo['lang']['friends_btn'];?>">
+      <?php echo $wo['lang']['friends_btn'];?>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=advertise');?>"  data-ajax="?link1=advertise">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/ad.png" alt="<?php echo $wo['lang']['advertise'];?>">
+      <?php echo $wo['lang']['ads'];?>
+      </a>
+    </li>
+    <?php if ($wo['config']['movies'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=movies'); ?>">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/movie.png" alt="<?php echo $wo['lang']['movies'];?>">
+      <?php echo $wo['lang']['movies'];?>
+      </a>
+    </li>
+    <?php } ?>
+    <?php if ($wo['config']['funding_system'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=funding'); ?>" data-ajax="?link1=funding">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36">
+          <image width="36" height="36" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvAAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAC+lBMVEVMaXEAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAADRwV3v3Gn24Wv45Wz8527+6W/y3mj85mwAAAC7rlH03mdgYDDv2WP+5Gn+ 5WmgkUH23mPKtFT632PHsU784GL53F9VVSv111wAAADszlfszliqkz7821sAAADvz1S/oD/ryE8A AAD30lHlv0cAAADtxEgAAADwxkYAAAD1yUb4ykUAAAD3yELzxEHzxD/uvj3ouDnbrTSngSYAAADx uzXzvDbgrC+lgCIAAADkri2CYhv0ty30uC3cpSjcpCcrJAfqrygAAABrTRTvsSaacRjxsSXuriNk Sw/pqSHXmhzyrh8AAAB5WBHenhvzrBwAAACTaBHXmBjsphoAAADRkhXenBfmoRfspBjwqRj+6G3+ 52v95mr95Gj95Wn942b94mX84WT84GL832H73mD83mD73V783V7721z83Fz721v72Vr72lr711b7 2Fj72Ff601r7qWv7jnf8fH78cIX8eID7t2b7b4T7qmv61lX7umL7cn77aIL6iHX7z1n61VP6uF/6 Z376ZH/6eXf5enj601H6z1P5bHf5YXz4bXj50U/50k/4oGH3XXn4Xnn50E33eWv3W3b2WnX3Wnb5 z0v2Y271V3P2V3P1VnL4zUn5zUn4zEf1VW/0U2/0U3D4y0XzWWn0UG3zT2z3yUT4ykP0bGDyTGny TWrzTWrzbWD3yEL1kVLxSWb3x0D3wUHxTmDwRmPwRWPxT2D3xT72xT7zhU/vQmD3xDz2wzz2vD7v UljuP13uPlztPlzuUlf3wjr0qEDtP1jtO1r2wTj2wDjyiEXsOFfsN1b2vzb2vjTwdUXrNVTrNFPq NFP2vTPubkLqMVDqMVH1vDHpLk7pLU3oLU30ui/1ujD1ui/wfzrnKkroKkr1uS70uC3xkzToNUXn Jkf0tyvyqy3pTzzmI0PqTz3ztSn0tSn0tinvhzDnPDz0tCfzsybzsiTzsCHzsSPyryDyrR7zrh/y rBzyqxr///+E1IKCAAAAYnRSTlMAAQIDBAYJCgg3g6vE3PSW4AUpqBCQ+PchyDriO/TjEsgLkpEt 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 AAAASUVORK5CYII="/>
+        </svg>
+        <?php echo $wo['lang']['funding'];?>
+      </a>
+    </li>
+    <?php } ?>
+    <div class="left-menu-more">
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=albums'); ?>" data-ajax="?link1=albums">
+        <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/albums.png" alt="<?php echo $wo['lang']['albums'];?>">
+        <?php echo $wo['lang']['albums'];?>
+        </a>
+      </li>
+      <?php if ($wo['config']['games'] == 1) { ?>
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=new-game'); ?>" data-ajax="?link1=new-game">
+        <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/game.png" alt="<?php echo $wo['lang']['games'];?>">
+        <?php echo $wo['lang']['games'];?>
+        </a>
+      </li>
+      <?php } ?>
+      <?php if ($wo['config']['offer_system'] == 1) { ?>
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=offers'); ?>" data-ajax="?link1=offers">
+        <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/offers.png" alt="<?php echo $wo['lang']['offers'];?>">
+        <?php echo $wo['lang']['offers'];?>
+        </a>
+      </li>
+      <?php } ?>
+      <?php if ($wo['config']['memories_system'] == 1) { ?>
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=memories'); ?>" data-ajax="?link1=memories">
+        <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/memories.png" alt="<?php echo $wo['lang']['memories'];?>">
+        <?php echo $wo['lang']['memories'];?>
+        </a>
+      </li>
+      <?php } ?>
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=poke'); ?>" data-ajax="?link1=poke">
+          <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" viewBox="-260 352 90 90">
+            <path fill="#1877f2" d="M-252.2 383.5h13.2v37h-13.2zM-179 382.9c-.5.7-1.1 1.6-2.3 2.2-1.3.6-2.4.4-2.9.3-2.3-.3-12.7-1-12.8-1-.1 0 0 .1.1.1.5.2 1.4.7 1.9 1.6.9 1.5.5 3 .3 3.9-.7 3.1-3.3 4.8-4.1 5.3.2.4.5 1 .7 1.8.1.3.6 2 .3 3.5-.6 3-4.3 4.3-4.5 4.4.2.5.5 1.3.6 2.2.2 1.7-.2 2.9-.3 3.2-.8 2.5-2.9 3.8-3.5 4.1h-29.4v-30.8c4-1.5 7.3-2.9 9.6-4 8-3.5 10.4-5.4 15.8-6 3-.3 6.4-.2 7-.1 1.2.1 2 .1 7.5.9 4.4.6 8.2 1.1 9.5 1.3 2.9.4 5.4.8 7.3 1 .2.4.4 1.1.4 1.9.2 2.2-.9 3.8-1.2 4.2z"/>
+          </svg>
+          <?php echo $wo['lang']['pokes']; ?>
+        </a>
+      </li>
+      <?php if ($wo['config']['common_things'] == 1) { ?>
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=common_things'); ?>" data-ajax="?link1=common_things">
+        <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/common.png" alt="<?php echo $wo['lang']['common_things'];?>">
+        <?php echo $wo['lang']['common_things'];?>
+        </a>
+      </li>
+      <?php } ?>
+      <?php if ($wo['config']['job_system'] == 1) { ?>
+      <li>
+        <a href="<?php echo Wo_SeoLink('index.php?link1=jobs'); ?>" data-ajax="?link1=jobs">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36">
+            <image width="36" height="36" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvAAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACWFBMVEUAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAADFeADSgADWggDUggDOfgBmRAAAAADIdgDKdwAuFwCxZQC0ZwAAAAC5ZQCx YQBVLQAAAAAAAAAAAAClWwC6ZQAAAAAAAAAAAAC1XgBKKwAAAAAAAAAAAAAAAABEIgC2XwAAAAAA AAB3VSLznUH9okT+o0XznEHvmj/2nD73nT4AAAAAAAAAAAAAAADcfSHVdh3Vdh4AAAC+aRgnFwgA AADPewDOewAAAADEdwDCdQA5JgDGegDYhAAAAAAAAAAAAAAAAADWggDWgQDOeQDOegDGcQDGcADH cQC+aAC2XwCuVgCuVwD+pET+o0T9o0P7oEH7oUH8oUH7oED5nj74nT75nT75nj/2mjv2mzz0mDnz lzjzlznxlDbxlTbwlDbvkjTvkjPukTPukjPrjjDsjjDsjjHsjzHpiy7pjC7qjC7piy3miCvniSvn iSzkhSjlhinkhinkhijigybhgiXigibfgCPffyPggCPdfSHdfSDcfCCsWBF+OAN4MwHaeh7aeR3a eR56NAHXdhvYdxvXdhrXdxvh2tfw8/bg2dbIaRPUcxjVdBjVcxjVdBnn6e3n6ezJaROiSQG6XQvK ahPScBbScBXScRXTcRbScRbd4OPe4OTRbxXKaRKmTgCmTQDU19rU19ulTQCqUgCqUwCrUwDHwLvK zdHGvbavWACwWACvVwC0dzq/uLO0dDW0XQC1XgC5YgC5YwC9ZwC+ZwDDbQDCbADHcgDIcgDMdwDM dgDRfADQfADVgQDahgD///8GIMtZAAAASnRSTlMAAQIDBAcICglgv+rikg8Fp8ULYm0MwqYtHBsd g8QGCxHrMBoZGBct7A4hD5Xq6pWS6OgPFBUW+dPTE4ohDenpEpaWG5fpICMkEEvstAsAAAABYktH RMeNBUpbAAAAB3RJTUUH5AgWDw03AkwsyQAABAJJREFUSMfllulbG1UUxiGzuo7bqEGdmRqCtnWp DqTaFkW7YEoFwqK0EgspUIoglIIpXaCUdoIN1GrTxVZTbZVKIdYk1hYIS7r4d3nuZCaZmdwg3/zg b07Ove+9z/tMcnKSO3l5/yfyMazUZEuzIqPmIcg0hOb8N5fNRlI0k4amyJRxeRvciX3o4Ue2Iyog Hn3scbjjsjbVxTFP7Ph4h4Enn+Jy+fSSwb3opyurqqoqqyorUa6G/Aydup/1M2bKR5Ac/6zH89zz 9gIV+wsvejwv8RyqjLWomfJxAiVKq2pqXnYUOosAZ6HjlZqaVyWRErisomrlYxlR5FdLjtq62jX2 Akch4Ciwr6mrrXNIq3lRZFitqEbX2tder/+kvh5en9ajQMmi33hzrcGnVoJe17Bz166Ghp2fNaCM AqPX0YTBBlUX32r0er2Nn+9u9Dbu9kL24vTbovpd6DaSlpuam5uam5r01IzXMk1mbNAYkm9Pi2+P z9fS4gNakMBpiSUJ3YY6o7i1rbUNYm9b615titPFDHqXBlv7vvaOjna4vkBpXwdem22CWNLZ9WVn d3eXenV2dXfjdYkomG09+3t7ew7s7z3Q0wtTNWG0yUYKoquvv6+v/yvIaOzr78drlyiQJpv/oH/A f2jAP3DIf3AABF5bbSWHj6DryFHIRyEO43WJ0YY+2+DQ0NCxwUEY4DUIU6zOKsn64ePDIwDKx0eG T5xUgJMndD0ygvbXm20cW/xOYHQ08HUgEBhVr1OKyildozQaeLeYNX3d7IaNwbHxsWBwHIbTwbGg onxz5sy3iqJrlMbHNm6w2ORN350NnQuFzp9D+WxIUS5cvHhBUXQdOg/p+02ywZZPcLTsuHT5hx/D 4Svh8E/h8M9hRbl67dpVRdF1+Movv16+5JBpjjD8cKhS50SK6xPXVSZ+m5yc1NZuTNyAgImzlCJt JlvR1PR0ZDoSmYpMQUQikd9v3vxDm8NGaq/IYhN4VzSWJhqLRuN/3rr1VzwK01gsHovHo2ju4oW0 Teuu22bu3L4DYVk09JZum5mdnZmdMTFrXcPYPHNznjkPRGZEJOYSCU8ipRMY2/xCmvmFeRML2t68 xYaasnpRZWlxaal6qVplEdYgqSNaXzS0pG5LJpN3k3chkrmx2qAp37uncv/efYjsEfG+oSU1W9kH FRUPKh5AZEaEeqRuT80/LDPZ4P+VLt28Zevfy7J1y+ZSOv3vqnUXIznt28rLP8pBefk2u1NiMr2V OjtIineXuZyFOXG6ytw8RRI207FIcBTDy7LbLWFxu2WZZyjT2a8dwRRNs0xOWJqmtGM4z+wjOU7I CZc+vLMemRAkFnUr6zEq6wENB+6hLX+F5P0X/AMi/pljpwPrGQAAACV0RVh0ZGF0ZTpjcmVhdGUA MjAyMC0wOC0yMlQxNToxMzo1NSswMzowMPRVdlgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjAtMDgt MjJUMTU6MTM6NTUrMDM6MDCFCM7kAAAAAElFTkSuQmCC"/>
+          </svg>
+          <?php echo $wo['lang']['jobs'];?>
+        </a>
+      </li>
+      <?php } ?>
+    </div>
+    <button class="left-menu-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0V0z" fill="none"/>
+        <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+      </svg>
+      <?php echo $wo['lang']['see_all']?>
+    </button>
+    <br>
+    <hr>
+    <li class="link_separator">Explore</li>
+    <?php if ($wo['config']['events'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=events'); ?>" data-ajax="?link1=events">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/event.png" alt="<?php echo $wo['lang']['events'];?>">
+      <?php echo $wo['lang']['events'] ?>
+      </a>
+    </li>
+    <?php } ?>
+    <?php if ($wo['config']['groups'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=groups');?>"  data-ajax="?link1=groups">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/group.png" alt="<?php echo $wo['lang']['groups'];?>">
+      <?php echo $wo['lang']['groups'];?>
+      </a>
+    </li>
+    <?php } ?>
+    <?php if ($wo['config']['pages'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=pages'); ?>" data-ajax="?link1=pages">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/page.png" alt="<?php echo $wo['lang']['pages'];?>">
+      <?php echo $wo['lang']['pages'];?>
+      </a>
+    </li>
+    <?php } ?>
+    <?php if ($wo['config']['blogs'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=my-blogs'); ?>" data-ajax="?link1=my-blogs">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/blog.png" alt="<?php echo $wo['lang']['blogs'];?>">
+      <?php echo $wo['lang']['blog'] ?>
+      </a>
+    </li>
+    <?php } ?>
+    <?php if ($wo['config']['classified'] == 1) { ?>
+    <li>
+      <a href="<?php echo Wo_SeoLink('index.php?link1=pmy-roducts'); ?>" data-ajax="?link1=my-products">
+      <img src="<?php echo $wo['config']['theme_url'];?>/img/left_menu/market.png" alt="<?php echo $wo['lang']['market'];?>">
+      <?php echo $wo['lang']['market'];?>
+      </a>
+    </li>
+    <?php } ?>
+  </ul>
+  <?php echo Wo_LoadPage('footer/sidebar-footer')?>
+</div>
+<?php } ?>
+<?php if ($wo['config']['order_posts_by'] == 0) { ?>
+<script>
+  function Wo_StorePosts(type) {
+    if (type > 1) {
+       return false;
+    }
+    if (type == 0) {
+  	$('.order_all').addClass('active');
+  	$('.order_people').removeClass('active');
+    } else {
+  	$('.order_all').removeClass('active');
+  	$('.order_people').addClass('active');
+    }
+    $('#posts-laoded').html('<div class="wo_loading_post"><div class="lightui1-shimmer"> <div class="_2iwr"></div> <div class="_2iws"></div> <div class="_2iwt"></div> <div class="_2iwu"></div> <div class="_2iwv"></div> <div class="_2iww"></div> <div class="_2iwx"></div> <div class="_2iwy"></div> <div class="_2iwz"></div> <div class="_2iw-"></div> <div class="_2iw_"></div> <div class="_2ix0"></div> </div></div><div class="wo_loading_post"><div class="lightui1-shimmer"> <div class="_2iwr"></div> <div class="_2iws"></div> <div class="_2iwt"></div> <div class="_2iwu"></div> <div class="_2iwv"></div> <div class="_2iww"></div> <div class="_2iwx"></div> <div class="_2iwy"></div> <div class="_2iwz"></div> <div class="_2iw-"></div> <div class="_2iw_"></div> <div class="_2ix0"></div> </div></div>');
+    $.get(Wo_Ajax_Requests_File() + '?f=update_order_by', {type:type}, function (data) {
+      if (data.status == 200) {
+        loadposts();
+      }
+    });
+  }
+  
+  $(document).ready(function(){
+    $(".left-menu-btn").click(function(){
+      $(".left-menu-more").toggle();
+    });
+  });
+</script>
+<?php } ?>

@@ -1,0 +1,207 @@
+<div class="navbar navbar-default navbar-fixed-top">
+	<nav class="header-fixed1000">
+		<div class="container-fluid">
+			<div class="wow_hdr_innr_left">
+				<a class="brand header-brand" href="<?php echo $wo['config']['site_url']; ?>">
+					<img width="40" src="<?php echo $wo['config']['theme_url'];?>/img/logo.<?php echo $wo['config']['logo_extension'];?>" alt="<?php echo $wo['config']['siteName'];?> Logo"/>
+				</a>
+				<?php if ($wo['loggedin'] == true) { ?>
+					<ul class="nav navbar-nav">
+          <li class="dropdown search-container">
+            <form class="navbar-form navbar-left col-lg-12 form-group" data-toggle="dropdown" role="button" id="navbar-searchbox" role="search">
+              <div class="form-group inner-addon <?php echo Wo_RightToLeft('left-addon');?> ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather main-color feather-search glyphicon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="form-control search-input" onkeyup="Wo_DetectSearchType(this.value), document.getElementById('wo_repeat_search').innerHTML = escapeHtml(this.value)" placeholder="<?php echo $wo['lang']['search']; ?>" dir="auto" <?php if ($wo['loggedin'] == true) { echo 'onfocus="Wo_GetRecentSearchs()"';}?>>
+              </div>
+            </form>
+            <ul class="dropdown-menu search-dropdown-container" style="margin-left:7px;" role="menu">
+              <div class="search-dropdown-result">
+                <?php
+                if ($wo['loggedin'] == true) {
+                  foreach (Wo_GetRecentSerachs() as $wo['result']) {
+                    if (!empty($wo['result'])) {
+                      echo Wo_LoadPage('header/search');
+                    }
+                  }
+                }
+                
+                ?>
+              </div>
+              <li>
+                <span class="search-advanced-container">
+                  <a href="<?php echo Wo_SeoLink('index.php?link1=search');?>" class="search-advanced-link" data-ajax="?link1=search">
+                    <div class="feather-svg-parent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <span style="vertical-align: middle;display: table-cell;padding-left: 10px;">
+            <?php echo $wo['lang']['advanced_search']; ?> 
+            <span id="wo_repeat_search"></span>
+          </span>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </li>
+					</ul>
+        <?php } ?>
+        <?php if ($wo['loggedin'] == true) { ?>
+        <ul class="nav navbar-nav">
+          <li><a href="javascript:void(0);" onclick="Wo_StorePosts(0);"><svg viewBox="0 0 28 28" height="28" width="28"><path fill="#1877f2" d="M25.825 12.29C25.824 12.289 25.823 12.288 25.821 12.286L15.027 2.937C14.752 2.675 14.392 2.527 13.989 2.521 13.608 2.527 13.248 2.675 13.001 2.912L2.175 12.29C1.756 12.658 1.629 13.245 1.868 13.759 2.079 14.215 2.567 14.479 3.069 14.479L5 14.479 5 23.729C5 24.695 5.784 25.479 6.75 25.479L11 25.479C11.552 25.479 12 25.031 12 24.479L12 18.309C12 18.126 12.148 17.979 12.33 17.979L15.67 17.979C15.852 17.979 16 18.126 16 18.309L16 24.479C16 25.031 16.448 25.479 17 25.479L21.25 25.479C22.217 25.479 23 24.695 23 23.729L23 14.479 24.931 14.479C25.433 14.479 25.921 14.215 26.132 13.759 26.371 13.245 26.244 12.658 25.825 12.29"></path></svg></a></li>
+
+            <li><a href="javascript:void(0);" onclick="Wo_StorePosts(1);"><svg viewBox="0 0 28 28" height="28" width="28"><path fill="currentColor" d="M10.5 4.5c-2.272 0-2.75 1.768-2.75 3.25C7.75 9.542 8.983 11 10.5 11s2.75-1.458 2.75-3.25c0-1.482-.478-3.25-2.75-3.25zm0 8c-2.344 0-4.25-2.131-4.25-4.75C6.25 4.776 7.839 3 10.5 3s4.25 1.776 4.25 4.75c0 2.619-1.906 4.75-4.25 4.75zm9.5-6c-1.41 0-2.125.841-2.125 2.5 0 1.378.953 2.5 2.125 2.5 1.172 0 2.125-1.122 2.125-2.5 0-1.659-.715-2.5-2.125-2.5zm0 6.5c-1.999 0-3.625-1.794-3.625-4 0-2.467 1.389-4 3.625-4 2.236 0 3.625 1.533 3.625 4 0 2.206-1.626 4-3.625 4zm4.622 8a.887.887 0 00.878-.894c0-2.54-2.043-4.606-4.555-4.606h-1.86c-.643 0-1.265.148-1.844.413a6.226 6.226 0 011.76 4.336V21h5.621zm-7.122.562v-1.313a4.755 4.755 0 00-4.749-4.749H8.25A4.755 4.755 0 003.5 20.249v1.313c0 .518.421.938.937.938h12.125c.517 0 .938-.42.938-.938zM20.945 14C24.285 14 27 16.739 27 20.106a2.388 2.388 0 01-2.378 2.394h-5.81a2.44 2.44 0 01-2.25 1.5H4.437A2.44 2.44 0 012 21.562v-1.313A6.256 6.256 0 018.25 14h4.501a6.2 6.2 0 013.218.902A5.932 5.932 0 0119.084 14h1.861z"></path></svg></a></li>
+
+          <li><a href="<?php echo Wo_SeoLink('index.php?link1=most_liked'); ?>" data-ajax="?link1=most_liked"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 512.074 512.074" width="24"><g><path fill="currentColor" d="m55.84 347.017c0 96.914 92.732 159.849 96.68 162.481 11.574 7.715 26.571-3.204 22.743-16.602-23.519-82.315-20.855-167.831 42.611-225.83-7.736 28.508-5.681 51.722 6.139 69.082 22.761 33.43 73.333 32.617 113.188 26.632 30.847 27.212 8.84 90.296-9.776 127.528-6.867 13.735 9.056 27.642 21.737 19.189 67.218-44.812 103.146-101.065 106.788-167.197 6.657-120.96-104.308-262.304-195.47-338.775-9.735-8.167-24.641-1.235-24.641 11.492 0 84.27-43.886 125.436-90.348 169.02-44.075 41.345-89.651 84.097-89.651 162.98zm207.943-299.943c76.017 72.537 167.998 189.022 162.207 293.627-2.229 40.28-19.037 76.565-50.096 108.354 24.33-87.765-25.813-114.188-28.347-115.455-2.836-1.418-6.049-1.9-9.174-1.379-47.415 7.902-78.379 3.431-89.546-12.931-15.495-22.701 6.082-69.818 14.875-84.556 7.375-12.29-5.133-26.961-18.433-21.645-45.746 18.301-134.068 91.939-109.142 242.719-23.267-24.257-50.287-62.413-50.287-108.791 0-65.891 37.155-100.744 80.176-141.1 41.35-38.788 87.577-82.158 97.767-158.843z"></path></g></svg></a></li>
+
+          <li><a href="<?php echo Wo_SeoLink('index.php?link1=interests');?>" data-ajax="?link1=interests"><svg height="24" viewBox="0 0 48 48" width="24"><path fill="currentColor" d="M24 0C10.8 0 0 10.8 0 24s10.8 24 24 24 24-10.8 24-24S37.2 0 24 0zm0 45C12.4 45 3 35.6 3 24S12.4 3 24 3s21 9.4 21 21-9.4 21-21 21zm10.2-33.2l-14.8 7c-.3.1-.6.4-.7.7l-7 14.8c-.3.6-.2 1.3.3 1.7.3.3.7.4 1.1.4.2 0 .4 0 .6-.1l14.8-7c.3-.1.6-.4.7-.7l7-14.8c.3-.6.2-1.3-.3-1.7-.4-.5-1.1-.6-1.7-.3zm-7.4 15l-5.5-5.5 10.5-5-5 10.5z"></path></svg></a></li>
+
+        <li><a href="<?php echo Wo_SeoLink('index.php?link1=saved-posts'); ?>" data-ajax="?link1=saved-posts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"><path fill="currentColor" d="M429.998 431.996c-11.046 0-20 8.954-20 20 0 5.576-1.889 10.268-5.615 13.947-3.91 3.861-9.583 6.098-15.132 6.054-5.475-.07-9.919-1.935-13.587-5.705L270.333 358.048a20 20 0 00-28.666 0L136.335 466.292c-3.641 3.742-8.118 5.608-13.686 5.706-5.61.115-11.257-2.12-15.14-5.936-3.655-3.591-5.508-8.206-5.508-13.718V79.999c0-22.056 17.944-40 40-40h227.997c22.056 0 40 17.944 40 40v272.997c0 11.046 8.954 20 20 20s20-8.954 20-20V79.999C449.997 35.888 414.11 0 369.998 0H142.001C97.889 0 62.002 35.888 62.002 79.999v372.345c0 16.174 6.206 31.179 17.474 42.25C90.77 505.69 106.32 512 122.288 512c.355 0 .711-.003 1.066-.009 16.191-.285 30.592-6.441 41.648-17.804L256 400.673l90.998 93.514c11.136 11.444 25.572 17.601 41.747 17.806 16.236.167 32.215-6.204 43.742-17.588 11.292-11.149 17.51-26.211 17.51-42.409.001-11.046-8.953-20-19.999-20z"/></svg></a></li>
+        </ul>
+        <?php } ?>
+			</div>
+        <?php
+        if ($wo['loggedin'] == true) {
+        echo Wo_LoadPage('header/loggedin-header');
+        } else {
+        echo Wo_LoadPage('header/main-header');
+        }
+        ?>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="loader"></div>
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+  $(".search-input").keydown(function(event) {
+    if (event.keyCode == 13 && event.shiftKey == 0) {
+      event.preventDefault();
+      window.location = '<?php echo Wo_SeoLink('index.php?link1=search?query=');?>' + $(this).val();
+    }
+  });
+});
+var Searchcontainer = $('.search-container');
+var SearchBox = $('.search-container .search-input');
+var SearchResult = $('.search-dropdown-result');
+
+function Wo_ChangeHomeButtonIcon() {
+
+  $('.navbar-home #home-button').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+}
+  
+function Wo_DetectSearchType(query) {
+  var Hash = smokeTheHash(query);
+  if (Hash) {
+    $('.search-advanced-container').hide(200);
+    Wo_SearchhashResult(query);
+  } else {
+    $('.search-advanced-container').fadeIn(200);
+    Wo_SearchResult(query);
+  }
+}
+
+function Wo_ClearSearches() {
+  $('.clear-searches').html('<i class="fa fa-spinner fa-spin"></i>');
+   $.get(Wo_Ajax_Requests_File(), {f: 'clearChat'}, function(data) {
+        if (data.status == 200) {
+           location.reload();
+        }
+   });
+}
+
+function Wo_GetRecentSearchs() {
+  $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'recent'}, function(data) {
+      if (data.status == 200) {
+          if (data.html.length > 0) {
+            SearchResult.html('<div class="recent"><div class="gray recent-searches <?php echo Wo_RightToLeft("pull-left");?>"> <?php echo $wo["lang"]["recent_searches"]?></div><div onclick="Wo_ClearSearches();" class="gray recent-searches clear-searches pointer <?php echo Wo_RightToLeft("pull-right");?>" style="color: #F44336;"><svg style="vertical-align: middle;margin-top: -3px;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><?php echo $wo["lang"]["clear"]?></div><div class="clear"></div></div>' + data.html);
+          }
+        }
+  });
+}
+function Wo_SearchResult(query) {
+    if (SearchBox.val() != '') {
+      Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      Searchcontainer.addClass('open');
+      Searchcontainer.find('.search-advanced-link').attr('href','<?php echo Wo_SeoLink("index.php?link1=search&query=")?>' + query);
+      Searchcontainer.find('.search-advanced-link').attr('data-ajax','<?php echo Wo_SeoLink("?link1=search&query=")?>' + query);
+      $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'normal', query: query}, function(data) {
+        if (data.status == 200) {
+          if (data.html.length == 0) {
+            SearchResult.html('<span class="center-text">' + " <?php echo $wo['lang']['no_result']; ?>" + '<span>');
+          } else {
+            SearchResult.html(data.html);
+          }
+        }
+        Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      });
+      $(document).click(function() {
+        Searchcontainer.removeClass('open');
+      });
+    } else {
+      Searchcontainer.removeClass('open');
+    }
+}
+
+
+function Wo_SearchhashResult(query) {
+    var Searchcontainer = $('.search-container');
+    var SearchBox = $('.search-container .search-input');
+    var SearchResult = $('.search-dropdown-result');
+    if (SearchBox.val() != '') {
+      Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      Searchcontainer.addClass('open');
+      Searchcontainer.find('.search-advanced-link').attr('href','<?php echo Wo_SeoLink("index.php?link1=search&query=")?>' + query);
+      Searchcontainer.find('.search-advanced-link').attr('data-ajax','<?php echo Wo_SeoLink("?link1=search&query=")?>' + query);
+      $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'hash', query: query}, function(data) {
+        if (data.status == 200) {
+          if (data.html.length == 0) {
+            SearchResult.html('<span class="center-text">' + " <?php echo $wo['lang']['no_result']; ?>" + '<span>');
+          } else {
+            SearchResult.html(data.html);
+          }
+        }
+        Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      });
+
+      $(document).click(function() {
+        Searchcontainer.removeClass('open');
+      });
+    } else {
+      Searchcontainer.removeClass('open');
+    }
+}
+
+function smokeTheHash(str) {
+  var n = str.search("#");
+  if(n != "-1"){
+    return true;
+  } else {
+    return false;
+  }
+}
+$(document).ready(function(){
+    $(".second-footer").remove();
+});
+</script>
+<?php if ($wo['config']['order_posts_by'] == 0) { ?>
+<script>
+function Wo_StorePosts(type) {
+  if (type > 1) {
+     return false;
+  }
+  if (type == 0) {
+  $('.order_all').addClass('active');
+  $('.order_people').removeClass('active');
+  } else {
+  $('.order_all').removeClass('active');
+  $('.order_people').addClass('active');
+  }
+  $('#posts-laoded').html('<div class="wo_loading_post"><div class="lightui1-shimmer"> <div class="_2iwr"></div> <div class="_2iws"></div> <div class="_2iwt"></div> <div class="_2iwu"></div> <div class="_2iwv"></div> <div class="_2iww"></div> <div class="_2iwx"></div> <div class="_2iwy"></div> <div class="_2iwz"></div> <div class="_2iw-"></div> <div class="_2iw_"></div> <div class="_2ix0"></div> </div></div><div class="wo_loading_post"><div class="lightui1-shimmer"> <div class="_2iwr"></div> <div class="_2iws"></div> <div class="_2iwt"></div> <div class="_2iwu"></div> <div class="_2iwv"></div> <div class="_2iww"></div> <div class="_2iwx"></div> <div class="_2iwy"></div> <div class="_2iwz"></div> <div class="_2iw-"></div> <div class="_2iw_"></div> <div class="_2ix0"></div> </div></div>');
+  $.get(Wo_Ajax_Requests_File() + '?f=update_order_by', {type:type}, function (data) {
+    if (data.status == 200) {
+      loadposts();
+    }
+  });
+}
+</script>
+<?php } ?>
